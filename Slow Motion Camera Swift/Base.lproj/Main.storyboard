@@ -10,7 +10,7 @@
         <scene sceneID="RLf-j3-8Kk">
             <objects>
                 <collectionViewController storyboardIdentifier="PhotoLibraryVC" id="Chj-YU-ZmS" customClass="PhotoLibraryViewController" customModule="Slow_Motion_Camera_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Cp5-Tj-bdb">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Cp5-Tj-bdb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,6 +41,9 @@
                                 <rect key="frame" x="267" y="7" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record Video"/>
+                                <connections>
+                                    <action selector="recordVideoButton:" destination="Chj-YU-ZmS" eventType="touchUpInside" id="TCj-BW-Vg0"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -66,12 +69,23 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8k3-uJ-gsF">
                                 <items>
-                                    <barButtonItem title="Play" id="Val-Wh-S5Z"/>
-                                    <barButtonItem title="Pause" id="Keh-lr-IbN"/>
+                                    <barButtonItem title="Play" id="Val-Wh-S5Z">
+                                        <connections>
+                                            <action selector="playButton:" destination="BYZ-38-t0r" id="f8U-As-Xk4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Pause" id="Keh-lr-IbN">
+                                        <connections>
+                                            <action selector="pauseButton:" destination="BYZ-38-t0r" id="L13-Zt-0K1"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" id="0Wx-Uj-Nle">
                                         <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="5eO-hq-ti1">
                                             <rect key="frame" x="115" y="6.5" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="slowMotionSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="Upt-BF-3Pj"/>
+                                            </connections>
                                         </switch>
                                     </barButtonItem>
                                 </items>
@@ -95,6 +109,11 @@
                             <constraint firstAttribute="trailing" secondItem="O7y-if-B0l" secondAttribute="trailing" id="ywT-qh-vOS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="onOffPositionSwitch" destination="5eO-hq-ti1" id="cV3-bk-6Zy"/>
+                        <outlet property="regularSloLabel" destination="O7y-if-B0l" id="8PY-ZP-OCs"/>
+                        <outlet property="sloMoSwitch" destination="5eO-hq-ti1" id="7ZK-zY-2T7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

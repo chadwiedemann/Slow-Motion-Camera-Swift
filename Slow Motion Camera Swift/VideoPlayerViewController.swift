@@ -7,15 +7,38 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
+import QuartzCore
+import MobileCoreServices
+
 
 class VideoPlayerViewController: UIViewController {
 
+    var videoURLString : String?
+    var player : AVPlayer?
+    var videoURL : NSURL?
+    @IBOutlet weak var onOffPositionSwitch: UISwitch!
+    
+    @IBOutlet weak var regularSloLabel: UILabel!
+    
+    @IBOutlet weak var sloMoSwitch: UISwitch!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.videoURL = NSURL(fileURLWithPath: self.videoURLString!)
+        self.player = AVPlayer(url: self.videoURL as! URL)
+        let playerLayer = AVPlayerLayer(player: self.player)
+        playerLayer.frame = self.view.bounds
+        self.view.layer.addSublayer(playerLayer)
+        self.navigationController?.title = "Regular Speed"
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,5 +54,33 @@ class VideoPlayerViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func playButton(_ sender: AnyObject) {
+        
+        if self.onOffPositionSwitch.isOn{
+            self.player?.rate = 0.1
+        }else{
+            self.player?.rate = 1
+        }
+        
+    }
 
+    @IBAction func pauseButton(_ sender: AnyObject) {
+        
+        self.player?.pause()
+        
+    }
+    
+    @IBAction func slowMotionSwitch(_ sender: AnyObject) {
+        
+        if self.sloMoSwitch.isOn{
+            self.regularSloLabel.text = "Slow Motion"
+        }else{
+            self.regularSloLabel.text = "Regular Speed"
+        }
+    
+        
+        
+    }
+    
+    
 }
