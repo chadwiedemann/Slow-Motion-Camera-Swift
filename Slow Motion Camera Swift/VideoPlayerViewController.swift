@@ -19,11 +19,8 @@ class VideoPlayerViewController: UIViewController {
     var player : AVPlayer?
     var videoURL : NSURL?
     @IBOutlet weak var onOffPositionSwitch: UISwitch!
-    
     @IBOutlet weak var regularSloLabel: UILabel!
-    
     @IBOutlet weak var sloMoSwitch: UISwitch!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,46 +38,25 @@ class VideoPlayerViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func playButton(_ sender: AnyObject) {
-        
         if self.onOffPositionSwitch.isOn{
             self.player?.rate = 0.1
         }else{
             self.player?.rate = 1
         }
-        
     }
 
     @IBAction func pauseButton(_ sender: AnyObject) {
-        
         self.player?.pause()
-        
     }
     
     @IBAction func slowMotionSwitch(_ sender: AnyObject) {
-        
         if self.sloMoSwitch.isOn{
             self.regularSloLabel.text = "Slow Motion"
         }else{
             self.regularSloLabel.text = "Regular Speed"
         }
-    
-        
-        
     }
-    
-    
 }
